@@ -1,0 +1,388 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>CSE276C_HW3_Q3</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-11-03"><meta name="DC.source" content="CSE276C_HW3_Q3.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">--------------------------------------------------------</a></li></ul></div><pre class="codeinput"><span class="comment">% Name          : Kai Chuen Tan</span>
+<span class="comment">% Title         : Homework 3</span>
+<span class="comment">% Course        : CSE 276C: Mathematics for Robotics</span>
+<span class="comment">% Professor     : Dr. Henrik I. Christensen</span>
+<span class="comment">% Date          : 25 th October 2021</span>
+
+clear <span class="string">all</span>;
+clc;
+
+fprintf(<span class="string">'Name          : Kai Chuen Tan\n'</span>)
+fprintf(<span class="string">'Title         : Homework 3\n'</span>)
+fprintf(<span class="string">'Course        : CSE 276C: Mathematics for Robotics\n'</span>)
+fprintf(<span class="string">'Professor     : Dr. Henrik I. Christensen\n'</span>)
+fprintf(<span class="string">'Date          : 25 th October 2021\n\n'</span>)
+fprintf(<span class="string">'--------------------------------------------------------\n\n'</span>)
+</pre><pre class="codeoutput">Name          : Kai Chuen Tan
+Title         : Homework 3
+Course        : CSE 276C: Mathematics for Robotics
+Professor     : Dr. Henrik I. Christensen
+Date          : 25 th October 2021
+
+--------------------------------------------------------
+
+</pre><h2 id="2">--------------------------------------------------------</h2><p>Problem 3 - Solving First Order Odinary Differential Equation</p><pre class="codeinput">fprintf(<span class="string">'Problem 3 - Solving First Order Odinary Differential Equation\n'</span>)
+fprintf(<span class="string">'--------------------------------------------------------------\n\n'</span>)
+
+<span class="comment">% First Order Differential Equation</span>
+dydx = @(x, y) 1 / (x^2 .* (1 - y));
+
+<span class="comment">% Positive Analytical Solution, y_positive = 1 + sqrt(2 * (1 + 1/x))</span>
+y_positive =@(x) 1 + sqrt(2 * (1 + 1/x));
+
+<span class="comment">% Positive Analytical Solution, y_positive = 1 - sqrt(2 * (1 + 1/x))</span>
+y_negative =@(x) 1 - sqrt(2 * (1 + 1/x));
+
+<span class="comment">% Interval [a, b]</span>
+a = 1;
+b = 0;
+
+<span class="comment">% Step Size, h</span>
+h = 0.05;
+
+<span class="comment">% Number of intervals, n</span>
+n = abs(b - a)/h;
+
+<span class="comment">% Initial of of y.</span>
+y_ini = -1;
+
+fprintf(<span class="string">'Problem 3a - Analytical Method\n'</span>)
+fprintf(<span class="string">'--------------------------------\n\n'</span>)
+
+y_exact = y_negative(0);
+
+fprintf(<span class="string">"Analytical Method's Exact Solution for Problem 3b,c, and d to compare, y(0) = %.6f.\n\n"</span>, y_exact)
+
+fprintf(<span class="string">'Problem 3b - Euler''s ODE Method\n'</span>)
+fprintf(<span class="string">'--------------------------------\n\n'</span>)
+
+[x_Euler, y_Euler] = ODE_Euler(dydx, a, b, n, h, y_ini);
+
+<span class="keyword">if</span> y_Euler &lt; 0
+
+    <span class="comment">%y_exact = y_negative(x_Euler(end));</span>
+    y_exact = y_negative(0);
+
+<span class="keyword">elseif</span> y_Euler &gt; 0
+
+    <span class="comment">%y_exact = y_positive(x_Euler(end));</span>
+    y_exact = y_positive(0);
+
+<span class="keyword">end</span>
+
+<span class="comment">% Calculate the percentage error and accuracy</span>
+error_Euler = abs((y_exact - y_Euler(end))/y_exact) * 100;
+<span class="comment">%accuracy_Euler = abs(100 - error_Euler);</span>
+
+fprintf(<span class="string">"Using ODE Euler's Method, y(0) = %.6f.\n\n"</span>, y_Euler(end))
+fprintf(<span class="string">"Percentage error of the ODE Euler's Method Solution =  %.6f %%\n\n"</span>, error_Euler)
+<span class="comment">%fprintf("Accuracy of the ODE Euler's Method Solution =  %.6f %%\n\n", accuracy_Euler)</span>
+fprintf(<span class="string">"Since the exact analytical solution is negative infinity and the relative error is infinity\n"</span>)
+fprintf(<span class="string">"divided by infinity, which is an intermediate form,\n"</span>)
+fprintf(<span class="string">"the accuracy of the ODE Euler's Method solution y_Euler is undefined at x = 0.\n\n\n"</span>)
+
+fprintf(<span class="string">'Problem 3c - Runge-Kutta 4th Order''s ODE Method\n'</span>)
+fprintf(<span class="string">'-------------------------------------------------\n\n'</span>)
+
+[x_RK4, y_RK4] = ODE_Runge_Kutta_4(dydx, a, b, n, h, y_ini);
+
+<span class="keyword">if</span> y_RK4 &lt; 0
+
+    <span class="comment">%y_exact = y_negative(x_RK4(end));</span>
+    y_exact = y_negative(0);
+
+<span class="keyword">elseif</span> y_RK4 &gt; 0
+
+    <span class="comment">%y_exact = y_positive(x_RK4(end));</span>
+    y_exact = y_positive(0);
+
+<span class="keyword">end</span>
+
+<span class="comment">% Calculate the percentage error and accuracy.</span>
+error_RK4 = abs((y_exact - y_RK4(end))/y_exact) * 100;
+<span class="comment">%accuracy_RK4 = abs(100 - error_RK4);</span>
+
+fprintf(<span class="string">"Using ODE Runge-Kutta 4th Order's Method, y(0) = %.2f.\n\n"</span>, y_RK4(end))
+fprintf(<span class="string">"Percentage error of the ODE Runge-Kutta 4th Order's Method Solution =  %.6f %%.\n\n"</span>, error_RK4)
+<span class="comment">%fprintf("Accuracy of the ODE Runge-Kutta 4th Order's Method Solution =  %.6f %%.\n\n", accuracy_RK4)</span>
+fprintf(<span class="string">"Since the exact analytical solution is negative infinity and the relative error is infinity\n"</span>)
+fprintf(<span class="string">"divided by infinity, which is an intermediate form,\n"</span>)
+fprintf(<span class="string">"the accuracy of the ODE Runge-Kutta 4th Order's Method solution y_RK4 is undefined at x = 0.\n\n\n"</span>)
+
+fprintf(<span class="string">'Problem 3d - Richardson Extrapolation''s ODE Method\n'</span>)
+fprintf(<span class="string">'-------------------------------------------------\n\n'</span>)
+
+[x_Richard, y_Richard] = Richardson_Extrpolation_Method(dydx, a, b, n, h, y_ini);
+
+<span class="keyword">if</span> y_Richard &lt; 0
+
+    <span class="comment">%y_exact = y_negative(x_Richard(end));</span>
+    y_exact = y_negative(0);
+
+<span class="keyword">elseif</span> y_RK4 &gt; 0
+
+    <span class="comment">%y_exact = y_positive(x_Richard(end));</span>
+    y_exact = y_positive(0);
+
+<span class="keyword">end</span>
+
+<span class="comment">% Calculate the percentage error and accuracy.</span>
+error_Richard = abs((y_exact - y_Richard(end))/y_exact) * 100;
+<span class="comment">%accuracy_Richard = abs(100 - error_Richard);</span>
+
+fprintf(<span class="string">"Using ODE Richardson Extrapolation Method, y(0) = %.2f.\n\n"</span>, y_Richard(end))
+fprintf(<span class="string">"Percentage error of the ODE Richardson Extrapolation Method Solution =  %.6f %%.\n\n"</span>, error_Richard)
+<span class="comment">%fprintf("Accuracy of the ODE Richardson Extrapolation Method Solution =  %.6f. %%\n\n", accuracy_Richard)</span>
+fprintf(<span class="string">"Since the exact analytical solution is negative infinity and the relative error is infinity\n"</span>)
+fprintf(<span class="string">"divided by infinity, which is an intermediate form,\n"</span>)
+fprintf(<span class="string">"the accuracy of the ODE Richardson Extrapolation Method solution y_Richard is undefined at x = 0.\n\n\n"</span>)
+</pre><pre class="codeoutput">Problem 3 - Solving First Order Odinary Differential Equation
+--------------------------------------------------------------
+
+Problem 3a - Analytical Method
+--------------------------------
+
+Analytical Method's Exact Solution for Problem 3b,c, and d to compare, y(0) = -Inf.
+
+Problem 3b - Euler's ODE Method
+--------------------------------
+
+Using ODE Euler's Method, y(0) = -8.124934.
+
+Percentage error of the ODE Euler's Method Solution =  NaN %
+
+Since the exact analytical solution is negative infinity and the relative error is infinity
+divided by infinity, which is an intermediate form,
+the accuracy of the ODE Euler's Method solution y_Euler is undefined at x = 0.
+
+
+Problem 3c - Runge-Kutta 4th Order's ODE Method
+-------------------------------------------------
+
+Using ODE Runge-Kutta 4th Order's Method, y(0) = -6071730441319061724688547840.00.
+
+Percentage error of the ODE Runge-Kutta 4th Order's Method Solution =  NaN %.
+
+Since the exact analytical solution is negative infinity and the relative error is infinity
+divided by infinity, which is an intermediate form,
+the accuracy of the ODE Runge-Kutta 4th Order's Method solution y_RK4 is undefined at x = 0.
+
+
+Problem 3d - Richardson Extrapolation's ODE Method
+-------------------------------------------------
+
+Using ODE Richardson Extrapolation Method, y(0) = -217308947846964039494139904.00.
+
+Percentage error of the ODE Richardson Extrapolation Method Solution =  NaN %.
+
+Since the exact analytical solution is negative infinity and the relative error is infinity
+divided by infinity, which is an intermediate form,
+the accuracy of the ODE Richardson Extrapolation Method solution y_Richard is undefined at x = 0.
+
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Name          : Kai Chuen Tan
+% Title         : Homework 3
+% Course        : CSE 276C: Mathematics for Robotics
+% Professor     : Dr. Henrik I. Christensen
+% Date          : 25 th October 2021
+
+clear all;
+clc;
+
+fprintf('Name          : Kai Chuen Tan\n')
+fprintf('Title         : Homework 3\n')
+fprintf('Course        : CSE 276C: Mathematics for Robotics\n')
+fprintf('Professor     : Dr. Henrik I. Christensen\n')
+fprintf('Date          : 25 th October 2021\n\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+
+%% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+% Problem 3 - Solving First Order Odinary Differential Equation
+fprintf('Problem 3 - Solving First Order Odinary Differential Equation\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+
+% First Order Differential Equation
+dydx = @(x, y) 1 / (x^2 .* (1 - y));
+
+% Positive Analytical Solution, y_positive = 1 + sqrt(2 * (1 + 1/x))
+y_positive =@(x) 1 + sqrt(2 * (1 + 1/x));
+
+% Positive Analytical Solution, y_positive = 1 - sqrt(2 * (1 + 1/x))
+y_negative =@(x) 1 - sqrt(2 * (1 + 1/x));
+
+% Interval [a, b]
+a = 1;
+b = 0;
+
+% Step Size, h
+h = 0.05;
+
+% Number of intervals, n
+n = abs(b - a)/h;
+
+% Initial of of y.
+y_ini = -1;
+
+fprintf('Problem 3a - Analytical Method\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+    
+y_exact = y_negative(0);
+
+fprintf("Analytical Method's Exact Solution for Problem 3b,c, and d to compare, y(0) = %.6f.\n\n", y_exact)
+
+fprintf('Problem 3b - Euler''s ODE Method\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+
+[x_Euler, y_Euler] = ODE_Euler(dydx, a, b, n, h, y_ini);
+
+if y_Euler < 0
+    
+    %y_exact = y_negative(x_Euler(end));
+    y_exact = y_negative(0);
+    
+elseif y_Euler > 0
+    
+    %y_exact = y_positive(x_Euler(end));
+    y_exact = y_positive(0);
+    
+end
+
+% Calculate the percentage error and accuracy
+error_Euler = abs((y_exact - y_Euler(end))/y_exact) * 100;
+%accuracy_Euler = abs(100 - error_Euler);
+
+fprintf("Using ODE Euler's Method, y(0) = %.6f.\n\n", y_Euler(end))
+fprintf("Percentage error of the ODE Euler's Method Solution =  %.6f %%\n\n", error_Euler)
+%fprintf("Accuracy of the ODE Euler's Method Solution =  %.6f %%\n\n", accuracy_Euler)
+fprintf("Since the exact analytical solution is negative infinity and the relative error is infinity\n")
+fprintf("divided by infinity, which is an intermediate form,\n")
+fprintf("the accuracy of the ODE Euler's Method solution y_Euler is undefined at x = 0.\n\n\n")
+
+fprintf('Problem 3c - Runge-Kutta 4th Order''s ODE Method\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-\n\n')
+
+[x_RK4, y_RK4] = ODE_Runge_Kutta_4(dydx, a, b, n, h, y_ini);
+
+if y_RK4 < 0
+    
+    %y_exact = y_negative(x_RK4(end));
+    y_exact = y_negative(0);
+    
+elseif y_RK4 > 0
+    
+    %y_exact = y_positive(x_RK4(end));
+    y_exact = y_positive(0);
+    
+end
+
+% Calculate the percentage error and accuracy.
+error_RK4 = abs((y_exact - y_RK4(end))/y_exact) * 100;
+%accuracy_RK4 = abs(100 - error_RK4);
+
+fprintf("Using ODE Runge-Kutta 4th Order's Method, y(0) = %.2f.\n\n", y_RK4(end))
+fprintf("Percentage error of the ODE Runge-Kutta 4th Order's Method Solution =  %.6f %%.\n\n", error_RK4)
+%fprintf("Accuracy of the ODE Runge-Kutta 4th Order's Method Solution =  %.6f %%.\n\n", accuracy_RK4)
+fprintf("Since the exact analytical solution is negative infinity and the relative error is infinity\n")
+fprintf("divided by infinity, which is an intermediate form,\n")
+fprintf("the accuracy of the ODE Runge-Kutta 4th Order's Method solution y_RK4 is undefined at x = 0.\n\n\n")
+
+fprintf('Problem 3d - Richardson Extrapolation''s ODE Method\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-\n\n')
+
+[x_Richard, y_Richard] = Richardson_Extrpolation_Method(dydx, a, b, n, h, y_ini);
+
+if y_Richard < 0
+    
+    %y_exact = y_negative(x_Richard(end));
+    y_exact = y_negative(0);
+    
+elseif y_RK4 > 0
+    
+    %y_exact = y_positive(x_Richard(end));
+    y_exact = y_positive(0);
+    
+end
+
+% Calculate the percentage error and accuracy.
+error_Richard = abs((y_exact - y_Richard(end))/y_exact) * 100;
+%accuracy_Richard = abs(100 - error_Richard);
+
+fprintf("Using ODE Richardson Extrapolation Method, y(0) = %.2f.\n\n", y_Richard(end))
+fprintf("Percentage error of the ODE Richardson Extrapolation Method Solution =  %.6f %%.\n\n", error_Richard)
+%fprintf("Accuracy of the ODE Richardson Extrapolation Method Solution =  %.6f. %%\n\n", accuracy_Richard)
+fprintf("Since the exact analytical solution is negative infinity and the relative error is infinity\n")
+fprintf("divided by infinity, which is an intermediate form,\n")
+fprintf("the accuracy of the ODE Richardson Extrapolation Method solution y_Richard is undefined at x = 0.\n\n\n")
+##### SOURCE END #####
+--></body></html>

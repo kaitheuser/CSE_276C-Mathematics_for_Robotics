@@ -1,0 +1,212 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>CSE276C_HW3_Q2</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-11-03"><meta name="DC.source" content="CSE276C_HW3_Q2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">--------------------------------------------------------</a></li></ul></div><pre class="codeinput"><span class="comment">% Name          : Kai Chuen Tan</span>
+<span class="comment">% Title         : Homework 3</span>
+<span class="comment">% Course        : CSE 276C: Mathematics for Robotics</span>
+<span class="comment">% Professor     : Dr. Henrik I. Christensen</span>
+<span class="comment">% Date          : 25 th October 2021</span>
+
+clear <span class="string">all</span>;
+clc;
+
+fprintf(<span class="string">'Name          : Kai Chuen Tan\n'</span>)
+fprintf(<span class="string">'Title         : Homework 3\n'</span>)
+fprintf(<span class="string">'Course        : CSE 276C: Mathematics for Robotics\n'</span>)
+fprintf(<span class="string">'Professor     : Dr. Henrik I. Christensen\n'</span>)
+fprintf(<span class="string">'Date          : 25 th October 2021\n\n'</span>)
+fprintf(<span class="string">'--------------------------------------------------------\n\n'</span>)
+</pre><pre class="codeoutput">Name          : Kai Chuen Tan
+Title         : Homework 3
+Course        : CSE 276C: Mathematics for Robotics
+Professor     : Dr. Henrik I. Christensen
+Date          : 25 th October 2021
+
+--------------------------------------------------------
+
+</pre><h2 id="2">--------------------------------------------------------</h2><p>Problem 2 - Solving Expected Value of a PDF with Numerical Integration</p><pre class="codeinput">fprintf(<span class="string">'Problem 2 - Solving Expected Value of a PDF with Numerical Integration\n'</span>)
+fprintf(<span class="string">'--------------------------------------------------------------------------\n\n'</span>)
+
+<span class="comment">% Given a probability density function (PDF), f(x)</span>
+<span class="comment">% f_x = @(x) 1 / exp(1) * exp(x) .* (x + 1);</span>
+
+<span class="comment">% x * f(x) function</span>
+xf_x = @(x) x / exp(1) .* exp(x) .* (x + 1);
+
+<span class="comment">% Given the range from a to b</span>
+a = 0; b = 1;
+
+<span class="comment">% Given the size of the interval</span>
+h = 0.1;
+
+<span class="comment">% Calculate the number of intervals, n</span>
+<span class="comment">% h = (b - a) / n</span>
+n = (b - a) / h;
+
+fprintf(<span class="string">'Problem 2a - Rectangular Method\n'</span>)
+fprintf(<span class="string">'--------------------------------\n\n'</span>)
+
+EX_rectangular = Rectangular_Method(xf_x, a, b, n, h);
+
+fprintf(<span class="string">"The expected value, E(X) using Rectangular Method is E(X) = %.6f.\n\n"</span>, EX_rectangular)
+
+fprintf(<span class="string">'\nProblem 2b - Midpoint Method\n'</span>)
+fprintf(<span class="string">'-------------------------------\n\n'</span>)
+
+EX_midpoint = Midpoint_Method(xf_x, a, b, n, h);
+
+fprintf(<span class="string">"The expected value, E(X) using Midpoint Method is E(X) = %.6f.\n\n"</span>, EX_midpoint)
+
+fprintf(<span class="string">'\nProblem 2c - Trapezoidal Method\n'</span>)
+fprintf(<span class="string">'----------------------------------\n\n'</span>)
+
+EX_trapezoidal = trapezoidal_method(xf_x, a, b, n, h);
+
+fprintf(<span class="string">"The expected value, E(X) using Trapezoidal Method is E(X) = %.6f.\n\n"</span>, EX_trapezoidal)
+</pre><pre class="codeoutput">Problem 2 - Solving Expected Value of a PDF with Numerical Integration
+--------------------------------------------------------------------------
+
+Problem 2a - Rectangular Method
+--------------------------------
+
+The expected value, E(X) using Rectangular Method is E(X) = 0.535979.
+
+
+Problem 2b - Midpoint Method
+-------------------------------
+
+The expected value, E(X) using Midpoint Method is E(X) = 0.630192.
+
+
+Problem 2c - Trapezoidal Method
+----------------------------------
+
+The expected value, E(X) using Trapezoidal Method is E(X) = 0.635979.
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Name          : Kai Chuen Tan
+% Title         : Homework 3
+% Course        : CSE 276C: Mathematics for Robotics
+% Professor     : Dr. Henrik I. Christensen
+% Date          : 25 th October 2021
+
+clear all;
+clc;
+
+fprintf('Name          : Kai Chuen Tan\n')
+fprintf('Title         : Homework 3\n')
+fprintf('Course        : CSE 276C: Mathematics for Robotics\n')
+fprintf('Professor     : Dr. Henrik I. Christensen\n')
+fprintf('Date          : 25 th October 2021\n\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+
+%% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+% Problem 2 - Solving Expected Value of a PDF with Numerical Integration 
+fprintf('Problem 2 - Solving Expected Value of a PDF with Numerical Integration\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+
+% Given a probability density function (PDF), f(x)
+% f_x = @(x) 1 / exp(1) * exp(x) .* (x + 1);
+
+% x * f(x) function
+xf_x = @(x) x / exp(1) .* exp(x) .* (x + 1);
+
+% Given the range from a to b
+a = 0; b = 1;
+
+% Given the size of the interval
+h = 0.1;
+
+% Calculate the number of intervals, n
+% h = (b - a) / n
+n = (b - a) / h;
+
+fprintf('Problem 2a - Rectangular Method\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+
+EX_rectangular = Rectangular_Method(xf_x, a, b, n, h);
+
+fprintf("The expected value, E(X) using Rectangular Method is E(X) = %.6f.\n\n", EX_rectangular)
+
+fprintf('\nProblem 2b - Midpoint Method\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-\n\n')
+
+EX_midpoint = Midpoint_Method(xf_x, a, b, n, h);
+
+fprintf("The expected value, E(X) using Midpoint Method is E(X) = %.6f.\n\n", EX_midpoint)
+
+fprintf('\nProblem 2c - Trapezoidal Method\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+
+EX_trapezoidal = trapezoidal_method(xf_x, a, b, n, h);
+
+fprintf("The expected value, E(X) using Trapezoidal Method is E(X) = %.6f.\n\n", EX_trapezoidal)
+##### SOURCE END #####
+--></body></html>
