@@ -1,0 +1,210 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>CSE276C_HW2_Q4</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-10-21"><meta name="DC.source" content="CSE276C_HW2_Q4.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#2">--------------------------------------------------------</a></li></ul></div><pre class="codeinput"><span class="comment">% Name          : Kai Chuen Tan</span>
+<span class="comment">% Title         : Homework 2</span>
+<span class="comment">% Course        : CSE 276C: Mathematics for Robotics</span>
+<span class="comment">% Professor     : Dr. Henrik I. Christensen</span>
+<span class="comment">% Date          : 17th October 2021</span>
+
+clear <span class="string">all</span>;
+clc;
+
+fprintf(<span class="string">'Name          : Kai Chuen Tan\n'</span>)
+fprintf(<span class="string">'Title         : Homework 2\n'</span>)
+fprintf(<span class="string">'Course        : CSE 276C: Mathematics for Robotics\n'</span>)
+fprintf(<span class="string">'Professor     : Dr. Henrik I. Christensen\n'</span>)
+fprintf(<span class="string">'Date          : 21st October 2021\n\n'</span>)
+fprintf(<span class="string">'--------------------------------------------------------\n\n'</span>)
+</pre><pre class="codeoutput">Name          : Kai Chuen Tan
+Title         : Homework 2
+Course        : CSE 276C: Mathematics for Robotics
+Professor     : Dr. Henrik I. Christensen
+Date          : 21st October 2021
+
+--------------------------------------------------------
+
+</pre><h2 id="2">--------------------------------------------------------</h2><p>Problem 4 - Lagrange's Method</p><pre class="codeinput">fprintf(<span class="string">'Problem 4 - Lagrange''s Method\n'</span>)
+fprintf(<span class="string">'-------------------------------\n\n'</span>)
+
+<span class="comment">% Planets' distance from the sun, s [10^6 km]</span>
+<span class="comment">% [Mercury, Venus, Earth, Mars, Jupiter] (left to right)</span>
+s = [58, 108, 149.5, 227, 778];
+s_Uranus = 2952.4;
+
+<span class="comment">% Days in a Planet Year, T [days]</span>
+<span class="comment">% [Mercury, Venus, Earth, Mars, Jupiter] (left to right)</span>
+T = [88, 224.7, 365.3, 687, 4331.5];
+
+<span class="comment">% Applying Vandermonde Matrix and Lagrange Polynomial to get the Lagrange</span>
+<span class="comment">% Funcion / Equation [a_o, a_1, a_2,..., a_n]</span>
+[fx_Lagrange_coeffs] = Lagrange_Method_Eq(s,T);
+
+<span class="comment">% Lagrange Function Check</span>
+fx = @(x, coeffs) coeffs(1) + coeffs(2) * x + coeffs(3) * x^2 + coeffs(4) * x^3 + coeffs(5) * x^4;
+
+<span class="comment">% Test Lagrange function that calculate the Days in a planet year, T [days]</span>
+T_Mars = fx(s(4), fx_Lagrange_coeffs);
+
+T_Earth = fx(s(3), fx_Lagrange_coeffs);
+
+T_Uranus = fx(s_Uranus, fx_Lagrange_coeffs);
+
+<span class="comment">% Print Lagrange Function.</span>
+fprintf(<span class="string">'The Lagrange Function is:\n\n'</span>)
+fprintf(<span class="string">'f(x) = %.4e x%c + %.4e x%c + %.4e x%c + %.4f x + %.4f\n\n'</span>,<span class="keyword">...</span>
+    fx_Lagrange_coeffs(end),8308, fx_Lagrange_coeffs(4), 179, fx_Lagrange_coeffs(3), 178, fx_Lagrange_coeffs(2), fx_Lagrange_coeffs(1))
+
+<span class="comment">% Print results</span>
+fprintf(<span class="string">'Given the Mars'' distance from the Sun is %.2f million kilometers,\nthe number of days in the planet year is %.2f days.\n\n'</span>,<span class="keyword">...</span>
+    s(4), T_Mars)
+
+fprintf(<span class="string">'Given the Earth''s distance from the Sun is %.2f million kilometers,\nthe number of days in the planet year is %.2f days.\n\n'</span>,<span class="keyword">...</span>
+    s(3), T_Earth)
+
+fprintf(<span class="string">'Given the Uranus''s distance from the Sun is %.2f million kilometers,\nthe number of days in the planet year is %.2f days.\n\n'</span>,<span class="keyword">...</span>
+    s_Uranus, T_Uranus)
+</pre><pre class="codeoutput">Problem 4 - Lagrange's Method
+-------------------------------
+
+The Lagrange Function is:
+
+f(x) = 8.7460e-10 x&#8308; + -4.8243e-06 x&sup3; + 8.6092e-03 x&sup2; + 1.4054 x + -21.5437
+
+Given the Mars' distance from the Sun is 227.00 million kilometers,
+the number of days in the planet year is 687.00 days.
+
+Given the Earth's distance from the Sun is 149.50 million kilometers,
+the number of days in the planet year is 365.30 days.
+
+Given the Uranus's distance from the Sun is 2952.40 million kilometers,
+the number of days in the planet year is 21470.83 days.
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+% Name          : Kai Chuen Tan
+% Title         : Homework 2
+% Course        : CSE 276C: Mathematics for Robotics
+% Professor     : Dr. Henrik I. Christensen
+% Date          : 17th October 2021
+
+clear all;
+clc;
+
+fprintf('Name          : Kai Chuen Tan\n')
+fprintf('Title         : Homework 2\n')
+fprintf('Course        : CSE 276C: Mathematics for Robotics\n')
+fprintf('Professor     : Dr. Henrik I. Christensen\n')
+fprintf('Date          : 21st October 2021\n\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH\n\n')
+
+%% REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH
+% Problem 4 - Lagrange's Method
+fprintf('Problem 4 - Lagrange''s Method\n')
+fprintf('REPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASHREPLACE_WITH_DASH_DASH-\n\n')
+
+% Planets' distance from the sun, s [10^6 km]
+% [Mercury, Venus, Earth, Mars, Jupiter] (left to right)
+s = [58, 108, 149.5, 227, 778];
+s_Uranus = 2952.4;
+
+% Days in a Planet Year, T [days]
+% [Mercury, Venus, Earth, Mars, Jupiter] (left to right)
+T = [88, 224.7, 365.3, 687, 4331.5];
+
+% Applying Vandermonde Matrix and Lagrange Polynomial to get the Lagrange
+% Funcion / Equation [a_o, a_1, a_2,..., a_n] 
+[fx_Lagrange_coeffs] = Lagrange_Method_Eq(s,T);
+
+% Lagrange Function Check
+fx = @(x, coeffs) coeffs(1) + coeffs(2) * x + coeffs(3) * x^2 + coeffs(4) * x^3 + coeffs(5) * x^4;
+
+% Test Lagrange function that calculate the Days in a planet year, T [days]
+T_Mars = fx(s(4), fx_Lagrange_coeffs);
+
+T_Earth = fx(s(3), fx_Lagrange_coeffs);
+
+T_Uranus = fx(s_Uranus, fx_Lagrange_coeffs);
+
+% Print Lagrange Function.
+fprintf('The Lagrange Function is:\n\n')
+fprintf('f(x) = %.4e x%c + %.4e x%c + %.4e x%c + %.4f x + %.4f\n\n',...
+    fx_Lagrange_coeffs(end),8308, fx_Lagrange_coeffs(4), 179, fx_Lagrange_coeffs(3), 178, fx_Lagrange_coeffs(2), fx_Lagrange_coeffs(1))
+
+% Print results
+fprintf('Given the Mars'' distance from the Sun is %.2f million kilometers,\nthe number of days in the planet year is %.2f days.\n\n',...
+    s(4), T_Mars)
+
+fprintf('Given the Earth''s distance from the Sun is %.2f million kilometers,\nthe number of days in the planet year is %.2f days.\n\n',...
+    s(3), T_Earth)
+
+fprintf('Given the Uranus''s distance from the Sun is %.2f million kilometers,\nthe number of days in the planet year is %.2f days.\n\n',...
+    s_Uranus, T_Uranus)
+##### SOURCE END #####
+--></body></html>
