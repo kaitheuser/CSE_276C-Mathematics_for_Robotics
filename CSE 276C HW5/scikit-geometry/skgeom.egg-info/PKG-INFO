@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: skgeom
+Version: 0.1.2
+Summary: scikit-geometry, the python computational geometry library
+Home-page: https://github.com/wolfv/scikit-geometry
+Author: Wolf Vollprecht
+Author-email: w.vollprecht@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Provides-Extra: drawing
