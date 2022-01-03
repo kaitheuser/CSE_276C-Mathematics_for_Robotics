@@ -1,0 +1,186 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\begin{document}
+\centerline{\bf Homework 1 - CSE 276C - Math for Robotics}
+\centerline{Due: 12 October 2021}
+
+\begin{enumerate}
+\item Implement the $PA = LDU$ decomposition algorithm by yourself
+  (i.e. do not just call a built-in function in Matlab or Python. You
+  may assume the matrix A is square and of full rank. Show that your
+  implementation is functional.
+
+\item Compute the $PA=LDU$ decomposition and the SVD decomposition for
+  each of the following matrices:
+
+  (you can use your own LDU implementation and it is OK to use a
+  pre-defined implementation for SVD).
+
+a. 
+\[
+A_1 = \left[\begin{array}{ccc} 4 & 7 & 0\\ 3 & 2 & 1 \\ 2 & 2 & -6\\ \end{array}\right]
+\]
+
+b. \[
+A_2 = \left[\begin{array}{ccccc} 
+              1 & 0 & 0 & 0 & 1\\ 
+              0 & 0 & 1 & 0 & 0\\
+              0 & 1 & 0 & 1 & 0\\ 
+              0 & 1 & 0 & 0 & 0\\
+              1 & 0 & 0 & 0 & 0\\ 
+\end{array}\right]
+\]
+
+c. 
+\[
+A_3 = \left[\begin{array}{ccc} 2 & 2 & 5\\ 3 & 2 & 5 \\ 1 & 1 & 5\\ \end{array}\right]
+\]
+
+\item Solve the following system of equations $Ax = b$ given the below
+  values for $A$ and $b$. For each system specify if it has zero, one
+  or more solutions. For the systems with zero solutions give the SVD
+  solution. Relate your answers to the SVD decomposition.
+
+  a. 
+  \begin{center}
+    \begin{tabular}{cc}
+      $
+      A = \left[\begin{array}{ccc}
+                  2 & 1 & 3 \\
+                  2 & 1 & 2 \\
+                  5 & 5 & 5\\
+                \end{array}\right]
+      $ &
+      $ 
+          b = \left[\begin{array}{c} 10 \\ -10 \\ 0 \end{array}\right]
+      $
+    \end{tabular}
+  \end{center}
+
+b. 
+  \begin{center}
+    \begin{tabular}{cc}
+      $
+      A = \left[\begin{array}{ccc}
+                  8 & 14 & 0 \\
+                  2 & 2 & -6 \\
+                  1 & 2 & 1  \\
+                \end{array}\right]
+      $ &
+      $ 
+          b = \left[\begin{array}{c}
+                      6 \\ 5 \\ 1
+                    \end{array}\right]
+      $
+    \end{tabular}
+  \end{center}
+
+c. 
+  \begin{center}
+    \begin{tabular}{cc}
+      $
+      A = \left[\begin{array}{ccc} 4 & 7 & 0 \\ 2 & 2 & -6\\1 & 2 & 1\\\end{array}\right]
+      $ &
+      $ 
+          b = \left[\begin{array}{c} 18 \\ -12 \\ 8 \end{array}\right]
+      $
+    \end{tabular}
+  \end{center}
+  
+\item Determine  the Nullspace of the following matrices:
+
+a.
+\[
+A_1 = \left[\begin{array}{ccc} 1 & 2 & 0\\ -1 & 1 & 6 \\  \end{array}\right]
+\]
+
+b.
+\[
+A_1 = \left[\begin{array}{cc} 2 & 1\\ 3 & 2\\  \end{array}\right]
+\]
+
+
+\item Consider the linear system of equations $Ax = b$:
+  \begin{center}
+    \begin{tabular}{cc}
+      $
+      A = \left[\begin{array}{ccc} 1 & 1 & 3 \\ 1 & 2 & 4\\1 & 3 & x\\\end{array}\right]
+      $ &
+      $ 
+          b = \left[\begin{array}{c} 2 \\ 3 \\ y \end{array}\right]
+      $
+    \end{tabular}
+  \end{center}
+  
+a. For what values of $x$ will the system have a unique solution?
+
+b. For what values of $x$ and $y$ will the system have no solution?
+
+c. For what values of $x$ and $y$ will the system have infinitely many solutions?
+
+Give reasons for your answers and show your work.
+
+\item In generating a mosaic / panorama from a set of images a
+  frequent problem is matching images. When the camera makes a small
+  motion a reasonable assumption is that there exist some rotation
+  matrix $\mathbf R$ (2x2) and translation vector $\vec{t}$ (2x1) such
+  that points in one image $x_i$ match to point $y_i$ in the other
+  image, i.e.:
+  \[
+    y_i = {\mathbf R} x_i + \vec{t}
+  \]
+  \centerline{\includegraphics[height=3cm]{image1}} 
+
+  The equation system can be unrolled to use standard software
+  tools. We can combine our unknowns into a vector $\vec{u}$ as
+  \begin{center}
+    $
+    \vec{u} = \left[ \begin{array}{c}
+                       r_{11} \\
+                       r_{12} \\
+                       r_{21} \\
+                       r_{22} \\
+                       t_1 \\
+                       t_2 \\
+                     \end{array} \right]
+    $
+  \end{center}
+  Write a matrix $\mathbf M$ (6x6) with a vector $\vec{d}$ so that we
+  can solve the systems ${\mathbf M} \vec{u} = \vec{d}$. It is
+  perfectly OK to so use temporary variable such as $\vec{x}_{sum}$, $\vec{y}_{sum}$, $\mathbf X$. 
+  
+\item Aligning point clouds. 
+
+The file bunnies.npy contains two point clouds $array\_p\_Om \in R^{3 \times 1000}$ and $array\_p\_s \in R^{3 \times 1000}$. Each point cloud thus contains $1000$ points. Find a rotation $R^*$ and translation $p^*$ that best aligns the two point clouds. That is, solve the following optimization problem for $p$ and $R$:
+
+\begin{equation}
+\min_{p \in \mathbb{R}^{3}, R \in SO(3)} \sum_{i=0}^{999} \left\| p + R ^Op^m_i - p^s_i \right\|^{2}
+\end{equation}
+
+where following numpy syntax:
+
+\begin{align*}
+    ^Op^m_i & = array\_p\_Om[:, i] \\
+    p^s_i & = array\_p\_s[:, i]
+\end{align*}
+
+The python notebook solve.ipynb provides utilities to load the point clouds and visualize them. Please submit your code and also visualizations of the aligned point clouds.
+
+You can use libraries for factorization of matrices in your solution, but you can not use a library to directly solve for $p$ and $R$ given the two point clouds.
+
+For references material, we encourage you to take a look at classic papers on this topic, such as section III in \url{https://ieeexplore.ieee.org/document/44063} and \url{https://arxiv.org/abs/0904.1613}.
+
+Acknowledgement: the point clouds were obtained from the mesh of the Stanford Bunny (\url{http://graphics.stanford.edu/data/3Dscanrep/})
+
+\end{enumerate}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
